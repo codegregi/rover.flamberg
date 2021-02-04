@@ -41,3 +41,13 @@ services:
       - php-fpm
     ports:
       - "80:80"
+
+  node:
+    build:
+      context: ./.docker/node
+    depends_on:
+      - php-fpm
+    environment:
+      - APP_ENV=${APP_ENV}
+    volumes:
+      - .:/app
